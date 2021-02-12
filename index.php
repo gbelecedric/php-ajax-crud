@@ -122,7 +122,7 @@
 
         }
 
-        if (error_first_name == '' || error_last_name == '' )
+        if (error_first_name == '' && error_last_name == '' )
         {
             // $('#form_action').attr('disabled','disabled');
             var form_data = $(this).serialize();
