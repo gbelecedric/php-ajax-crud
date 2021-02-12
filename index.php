@@ -168,12 +168,12 @@
             dataType:"json",
             success:function(data){
                 console.log(data);
+                $('#user_dialog').attr('title','Edit Data');
                 $('#first_name').val(data.first_name);
                 $('#last_name').val(data.last_name);
                 $('#action').val('update');
                 $('#form_action').val("Update");
                 $('#hidden_id').val(id);
-                $('#user_dialog').attr('title','Edit Data');
                 $('#user_dialog').dialog('open');
 
                 
