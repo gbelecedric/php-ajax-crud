@@ -183,7 +183,30 @@
         });
 
     });
+    function myFunction(id){
+        var id = id;
+        var action = "fetch_single";
+        $.ajax({
+            url:'action.php',
+            method:"POST",
+            data:{id:id , action:action},
+            dataType:"json",
+            success:function(data){
+                $('#first_name').val(data.first_name);
+                $('#last_name').val(data.last_name);
+                $('#user_dialog').attr('title','Edit Data');
+                $('#action').attr('title','update');
+                $('#form_action').val("Update");
+                $('#hidden_id').val(id);
+                $('#user_dialog').dialog('open');
 
+
+
+
+            }
+        });
+
+    }
 
     })
 </script>
