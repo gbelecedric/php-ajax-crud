@@ -22,11 +22,12 @@ if (isset($_POST["action"]))
         $req->execute($_POST["id"]]);
         $result = $req->fetch;
 
-        $output['first_name'] = $result['first_name'];
-        $output['last_name'] = $result['last_name'];
-
-
-    echo json_decode($output);
+		foreach($result as $row)
+		{
+			$output['first_name'] = $row['first_name'];
+			$output['last_name'] = $row['last_name'];
+		}
+		echo json_encode($output);
     }
 }
 
