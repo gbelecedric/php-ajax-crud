@@ -14,21 +14,22 @@ if (isset($_POST["action"]))
         echo'<p>Donnée Inserer</p>';
     }
 
-    if ($_POST["action"] == "fetch_single")
+ 
+if($_POST["action"] == "fetch_single")
+{
+    $db = Database::connect();
+    $query = "
+    SELECT * FROM tb_texte WHERE id = '".$_POST["id"]."'
+    ";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    foreach($result as $row)
     {
-        $db = Database::connect();
-        $req=$db->prepare('SELECT *  FROM tb_texte SET WHERE id =?');
-
-        $req->execute($_POST["id"]]);
-        $result = $req->fetchAll();
-
-		foreach($result as $row)
-		{
-			$output['first_name'] = $row['first_name'];
-			$output['last_name'] = $row['last_name'];
-		}
-		echo json_encode($output);
+        $output['first_name'] = $row['first_name'];
+        $output['last_name'] = $row['last_name'];
     }
+    echo json_encode($output);
 }
 
 ?>

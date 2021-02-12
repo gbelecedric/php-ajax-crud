@@ -24,22 +24,16 @@ if($total_row > 0)
        # code...
 $output .= '
 
-    <tr>
-    <td> '.$row["first_name"].'</td>
-    <td> '.$row["last_name"].'</td>
-    <td>
-        <button type="button" name="edit" class="btn btn-primary 
-        btn-xs edit" id ="'.$row["id"].'">Edit
-        </button>
-    </td>
-    <td > 
-    <button type="button" name="delete" class="btn btn-danger 
-    btn-xs delete" id ="'.$row["id"].'">Delete
-    </button>
-    
-    </td>
-
-    </tr>
+		<tr>
+			<td width="40%">'.$row["first_name"].'</td>
+			<td width="40%">'.$row["last_name"].'</td>
+			<td width="10%">
+				<button  type="button" name="edit" class="btn btn-primary btn-xs edit" id="'.$row["id"].'">Edit</button>
+			</td>
+			<td width="10%">
+				<button type="button" name="delete" class="btn btn-danger btn-xs delete" id="'.$row["id"].'">Delete</button>
+			</td>
+		</tr>
 ';
    }
 }
