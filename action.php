@@ -8,9 +8,10 @@ if (isset($_POST["action"]))
     if ($_POST["action"] == "insert")
     {
         $db = Database::connect();
-        $req=$db->prepare('INSERT INTO utilisateur SET nom= ? , mot_de_pass= ? , email= ?,prenom= ? , phone=?');
-        $password=password_hash($password,PASSWORD_BCRYPT);
-        $req->execute([$nom ,$password,  $email, $prenom, $contact,]);
+        $req=$db->prepare('INSERT INTO tb_texte SET first_name= ? , last_name= ?');
+
+        $req->execute([$_POST["first_name"],$_POST["last_name"]]);
+        echo'<p>Donnée Inserer</p>'
     }
 }
 
