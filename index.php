@@ -157,7 +157,7 @@
         width: 400
     });
 
-    $(document).on('click' , '.edite' , function(){
+    $(document).on('click' , '.edit' , function(){
         var id = $(this).attr("id");
         var action = "fetch_single";
         $.ajax({
