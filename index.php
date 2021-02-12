@@ -1,60 +1,51 @@
-<html>  
-    <head>  
-        <title>PHP Ajax Crud using JQuery UI Dialog Box</title>  
-		<link rel="stylesheet" href="jquery-ui.css">
-        <link rel="stylesheet" href="bootstrap.min.css" />
-		<script src="jquery.min.js"></script>  
-		<script src="jquery-ui.js"></script>
-    </head>  
-    <body>  
-        <div class="container">
-			<br />
-			
-			<h3 align="center">PHP Ajax Crud using JQuery UI Dialog</a></h3><br />
-			<br />
-			<div align="right" style="margin-bottom:5px;">
-			<button type="button" name="add" id="add" class="btn btn-success btn-xs">Add</button>
-			</div>
-			<div class="table-responsive" id="user_data">
-				
-			</div>
-			<br />
-		</div>
-		
-		<div id="user_dialog" title="Add Data">
-			<form method="post" id="user_form">
-				<div class="form-group">
-					<label>Enter First Name</label>
-					<input type="text" name="first_name" id="first_name" class="form-control" />
-					<span id="error_first_name" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-					<label>Enter Last Name</label>
-					<input type="text" name="last_name" id="last_name" class="form-control" />
-					<span id="error_last_name" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-					<input type="hidden" name="action" id="action" value="insert" />
-					<input type="hidden" name="hidden_id" id="hidden_id" />
-					<input type="submit" name="form_action" id="form_action" class="btn btn-info" value="Insert" />
-				</div>
-			</form>
-		</div>
-		
-		<div id="action_alert" title="Action">
-			
-		</div>
-		
-		<div id="delete_confirmation" title="Confirmation">
-		<p>Are you sure you want to Delete this data?</p>
-		</div>
-		
-    </body>  
-</html>  
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <title>PHP AJAX CRUD </title>
+  </head>
+  <body>
+   
+    <div class="container">
+        <br>
+        <h3 align="center"> PHP Ajax Crud </h3><br><br>
+        <div align="right" style="margin-bottom:5px;" >
+            
+        </div>
+        <div id="user_data" class="table-responsive">
+             
+        </div>
+        
+    </div>
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+  </body>
+</html>
 
-<script>  
+<script>
+    $(document).ready(function(){
 
+        function load_data()
+        {
+            $.ajax({
+                url:"fetch.php",
+                method:"POST",
+                success:function(data){
+                    $('#user_data').html(data);
+                }
+            })
+        }
+    })
 </script>
