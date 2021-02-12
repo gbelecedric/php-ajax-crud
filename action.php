@@ -20,7 +20,7 @@ if (isset($_POST["action"]))
         $req=$db->prepare('SELECT *  FROM tb_texte SET WHERE id =?');
 
         $req->execute($_POST["id"]]);
-        $result = $req->fetch;
+        $result = $req->fetchAll();
 
 		foreach($result as $row)
 		{
