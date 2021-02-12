@@ -13,8 +13,9 @@
         <br>
         <h3 align="center"> PHP Ajax Crud </h3><br><br>
         <div align="right" style="margin-bottom:5px;" >
-            
+            <button type="button" name="add" id="add" class="btn btn-success btn-xs"> Add</button>
         </div>
+        
         <div id="user_data" class="table-responsive">
              
         </div>
