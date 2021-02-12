@@ -29,19 +29,20 @@ if (isset($_POST["action"]))
 		}
 		echo json_encode($output);
     }
+
+    if ($_POST["action"] == "update")
+    {
+        $db = Database::connect();
+        $req=$db->prepare('UPDATE tb_texte SET first_name= ?, last_name= ?  WHERE tb_texte.id = ?');
+
+        $req->execute([$_POST["first_name"],$_POST["last_name"],$_POST["hidden_id"]]);
+
+        echo'<p> Donnée updater</p>';
+    }
 }
 
-if ($_POST["action"] == "update")
-{
-    $db = Database::connect();
-    $req=$db->prepare('UPDATE tb_texte SET first_name = ?, last_name=?  WHERE id = ?');
 
-    $req->execute([$_POST["first_name"], $_POST["last_name"], $_POST["hidden_id"]]);
-    
 
-    echo'<p>Data Updating</p>';
-}
-}
 
 
 ?>

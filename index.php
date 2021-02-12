@@ -126,6 +126,7 @@
         {
             $('#form_action').attr('disabled','disabled');
             var form_data = $(this).serialize();
+            
             $.ajax({
                 url:"action.php",
                 method:"POST",
@@ -160,7 +161,6 @@
     $(document).on('click' , '.edit' , function(){
         var id = $(this).attr("id");
         var action = "fetch_single";
-        console.log(id ,action);
         $.ajax({
             url:'action.php',
             method:"POST",
@@ -171,10 +171,12 @@
                 $('#first_name').val(data.first_name);
                 $('#last_name').val(data.last_name);
                 $('#user_dialog').attr('title','Edit Data');
-                $('#action').attr('title','update');
+                $('#action').val('update');
                 $('#form_action').val("Update");
                 $('#hidden_id').val(id);
                 $('#user_dialog').dialog('open');
+
+                
 
 
 
@@ -183,6 +185,8 @@
         });
 
     });
+
+
     function myFunction(id){
         var id = id;
         var action = "fetch_single";
