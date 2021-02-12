@@ -29,7 +29,7 @@ $output .= '
     <td> '.$row["last_name"].'</td>
     <td>
         <button type="button" name="edit" class="btn btn-primary 
-        btn-xs edite" id ="'.$row["id"].'">Edit
+        btn-xs edit" id ="'.$row["id"].'">Edit
         </button>
     </td>
     <td > 
