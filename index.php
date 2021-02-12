@@ -49,6 +49,9 @@
         </form>
             
     </div>
+    <div id="action_alert" title="Action">
+        
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
@@ -135,6 +138,9 @@
                 success:function(data)
                 {
                     $('#user_dialog').dialog('close');
+                    $('#action_alert').html(data);
+                    $('#action_alert').dialog('open');
+                    load_data();
                 }
             })
 
@@ -142,6 +148,10 @@
 
 
     });
+    $('#action_alert').dialog({
+        autoOpen:false,
+        width: 400
+    })
 
     })
 </script>
