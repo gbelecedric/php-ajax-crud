@@ -52,6 +52,11 @@
     <div id="action_alert" title="Action">
         
     </div>
+    <div id="delete_confirmation" title="confirmation">
+
+        <p>veux tu vraiment supprimer ?</p>
+        
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
@@ -186,31 +191,50 @@
 
     });
 
+    $('#delete_confirmation').dialog({
+        autoOpen:false,
+        modal:true,
+        buttons:{
+            Ok: function(){
+                var id = $(this).attr("data-id");
+                
+                var action = 'delete';
 
-    function myFunction(id){
-        var id = id;
-        var action = "fetch_single";
-        $.ajax({
-            url:'action.php',
-            method:"POST",
-            data:{id:id , action:action},
-            dataType:"json",
-            success:function(data){
-                $('#first_name').val(data.first_name);
-                $('#last_name').val(data.last_name);
-                $('#user_dialog').attr('title','Edit Data');
-                $('#action').attr('title','update');
-                $('#form_action').val("Update");
-                $('#hidden_id').val(id);
-                $('#user_dialog').dialog('open');
+                $.ajax({
+                    url:'action.php',
+                    method:"POST",
+                    data:{id:id , action:action},
+                  
+                    success:function(data){
+                        
+                        $('#delete_confirmation').dialog('close');
+                        $('#action_alert').html(data);
+                        $('#action_alert').dialog('open');
+                        load_data();
+
+
+                    }
+                })
+
+            },
+
+            Cancel: function(){
+                $('#delete_confirmation').dialog('close');
+            },
+        } 
+
+    });
+
+    $(document).on('click' , '.delete' , function(){
+        var id = $(this).attr("id");
+        $('#delete_confirmation').attr('data-id',id).dialog('open');   
+     
+
+
+    });
 
 
 
-
-            }
-        });
-
-    }
 
     })
 </script>

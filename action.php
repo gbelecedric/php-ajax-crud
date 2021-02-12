@@ -42,11 +42,11 @@ if (isset($_POST["action"]))
     if ($_POST["action"] == "delete")
     {
         $db = Database::connect();
-        $req=$db->prepare('UPDATE tb_texte SET first_name= ?, last_name= ?  WHERE tb_texte.id = ?');
+        $req=$db->prepare('DELETE  FROM tb_texte WHERE tb_texte.id = ?');
 
-        $req->execute([$_POST["first_name"],$_POST["last_name"],$_POST["hidden_id"]]);
+        $req->execute([$_POST["id"]]);
 
-        echo'<p> Donnée updater</p>';
+        echo'<p> Donnée Supprimer</p>';
     }
 }
 
