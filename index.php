@@ -170,10 +170,10 @@
                 console.log(data);
                 $('#first_name').val(data.first_name);
                 $('#last_name').val(data.last_name);
-                $('#user_dialog').attr('title','Edit Data');
                 $('#action').val('update');
                 $('#form_action').val("Update");
                 $('#hidden_id').val(id);
+                $('#user_dialog').attr('title','Edit Data');
                 $('#user_dialog').dialog('open');
 
                 
