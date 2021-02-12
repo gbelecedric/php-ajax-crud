@@ -1,27 +1,21 @@
-<?php>
+<?php
 
-include('database.php');
-$query = "SELECT * FROM tb_texte";
+require 'database.php';
 $db = Database::connect();
+
+$query = "SELECT * FROM tb_texte";
 $statement=$db->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
 $total_row = $statement->rowCount();
-
 $output = '
-    <table class="table table-striped table-bordered">
-
-    
-        <tr>
-            <th> First Name</th>
-            <th > Last Name</th>
-            <th > Edit</th>
-            <th > Delete</th>
-
-        </tr>
-
-   
-
+<table class="table table-striped table-bordered">
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
 ';
 
 if($total_row > 0)
@@ -31,8 +25,8 @@ if($total_row > 0)
 $output .= '
 
     <tr>
-    <td> '.row["fist_name"].'</td>
-    <td> '.row["last_name"].'</td>
+    <td> '.$row["first_name"].'</td>
+    <td> '.$row["last_name"].'</td>
     <td>
         <button type="button" name="edit" class="btn btn-primary 
         btn-xs edit" id ="'.$row["id"].'">Edit

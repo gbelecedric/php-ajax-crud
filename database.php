@@ -1,34 +1,40 @@
 <?php
-   
-   class Database
-   {
-       private static $dbHost = "localhost";
-       private static $dbName = "testing";
-       private static $dbUsername = "root";
-       private static $dbUserpassword = "";
-       private static $connection = null;
+/**
+ * Created by PhpStorm.
+ * User: DELL
+ * Date: 20/11/2018
+ * Time: 16:49
+ */
 
-       public static function connect()
-       {
-           if(self::$connection == null )
-           {
-               try {
-                   self::$connection = new PDO("mysql:host=" . self::$dbHost . ";dbname=" . self::$dbName , self::$dbUsername, self::$dbUserpassword );
-               } 
-               catch(PDOException $e)
-               {
-                   die($e->getMessage());
-               }
-           }
-           return self::$connection;
-       }
+class Database
+{
+    private static $dbHost = "localhost";
+    private static $dbName ="testing";
+    private static $dbUsername = "root";
+    private static $dbUserpassword = "";
+    private static $connection = null;
+    public static function connect()
+    
+    {
+        if(self::$connection == null)
+        {
+            try
+            {
+                self::$connection = new PDO("mysql:host=" . self::$dbHost . ";dbname=" . self::$dbName , self::$dbUsername, self::$dbUserpassword );
+            }
+            catch(PDOException $e)
+            {
+                die($e->getMessage());
+            }
+        }
+        return self::$connection;
+    }
 
-       public static function disconnect()
-       {
-           self::$connection = null;
-       }
+    public static function disconnect()
+    {
+        self::$connection = null;
+    }
+}
 
-
-   }
-   
+// $db = Database::connect();
 ?>
