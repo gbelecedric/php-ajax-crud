@@ -11,7 +11,7 @@ if (isset($_POST["action"]))
         $req=$db->prepare('INSERT INTO tb_texte SET first_name= ? , last_name= ?');
 
         $req->execute([$_POST["first_name"],$_POST["last_name"]]);
-        echo'<p>Donnée Inserer</p>'
+        echo'<p>Donnée Inserer</p>';
     }
 }
 
