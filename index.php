@@ -97,39 +97,34 @@
 
         if ($('#first_name').val() == '')
         {
-            error_first_name = "First Name is required"
-            $('#error_first_name').text(error_first_name)
-            $('#first_name').css('border-color' , '#cc0000')
+            error_first_name = "First Name is required";
+            $('#error_first_name').text(error_first_name);
+            $('#first_name').css('border-color' , '#cc0000');
 
         }
         else
         {
-            error_first_name = " "
-            $('#error_first_name').text(error_first_name)
-            $('#first_name').css('border-color' , '')
+            error_first_name = '';
+            $('#error_first_name').text(error_first_name);
+            $('#first_name').css('border-color' , '');
         }
         if ($('#last_name').val() == '')
         {
-            error_last_name = "Last Name is required"
-            $('#error_last_name').text(error_last_name)
-            $('#last_name').css('border-color' , '#cc0000')
+            error_last_name = "Last Name is required";
+            $('#error_last_name').text(error_last_name);
+            $('#last_name').css('border-color' , '#cc0000');
         }
         else
         {
-            error_last_name = " "
-            $('#error_last_name').text(error_last_name)
-            $('#last_name').css('border-color' , '')
+            error_last_name = '';
+            $('#error_last_name').text(error_last_name);
+            $('#last_name').css('border-color' , '');
 
         }
 
         if (error_first_name == '' || error_last_name == '' )
         {
-             return false;
-        }
-        else
-        {
-
-            $('#form_action').attr('disabled','disabled');
+            // $('#form_action').attr('disabled','disabled');
             var form_data = $(this).serialize();
             $.ajax({
                 url:"action.php",
@@ -141,8 +136,16 @@
                     $('#action_alert').html(data);
                     $('#action_alert').dialog('open');
                     load_data();
+                    $('#first_name').val() = '';
+                    $('#last_name').val() = '';
+
                 }
             })
+        }
+        else
+        {
+
+             return false;
 
         }
 
