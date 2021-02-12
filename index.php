@@ -160,7 +160,7 @@
     $(document).on('click' , '.edit' , function(){
         var id = $(this).attr("id");
         var action = "fetch_single";
-        
+        console.log(id ,action);
         $.ajax({
             url:'action.php',
             method:"POST",
