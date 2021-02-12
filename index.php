@@ -124,7 +124,7 @@
 
         if (error_first_name == '' && error_last_name == '' )
         {
-            // $('#form_action').attr('disabled','disabled');
+            $('#form_action').attr('disabled','disabled');
             var form_data = $(this).serialize();
             $.ajax({
                 url:"action.php",
@@ -136,8 +136,9 @@
                     $('#action_alert').html(data);
                     $('#action_alert').dialog('open');
                     load_data();
-                    $('#first_name').val() = '';
-                    $('#last_name').val() = '';
+                    $('#first_name').val('');
+                    $('#last_name').val('');
+                    $('#form_action').prop("disabled", false);
 
                 }
             })
@@ -154,6 +155,31 @@
     $('#action_alert').dialog({
         autoOpen:false,
         width: 400
+    });
+
+    $(document).on('click' , '.edite' , function(){
+        var id = $(this).attr("id");
+        var action = "fetch_single";
+        $.ajax({
+            url:'action.php',
+            method:"POST",
+            data:{id:id , action:action},
+            dataType:"json",
+            success:function(data){
+                $('#first_name').val(data.first_name);
+                $('#last_name').val(data.last_name);
+                $('#user_dialog').attr('title','Edit Data');
+                $('#action').attr('title','update');
+                $('#form_action').val("Update");
+                $('#hidden_id').val(id);
+                $('#user_dialog').dialog('open');
+
+
+
+
+            }
+        })
+
     })
 
     })
